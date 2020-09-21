@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>extract-video-frames-example</title>
+    <style>
+        #app {
+            display: block;
+            width: 800px;
+            height: 50px;
+            background: #000 ;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../dist/bundle.js"></script>
+    <script>
+        const {width, height} = document.querySelector('#app').getBoundingClientRect();
+
+        extractVideoFrames('https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4', {
+            // frames: [5, 15],
+            canvasWidth: width,
+            canvasHeight: height
+        }).then(canvas => {
+            document.querySelector('#app').appendChild(canvas);
+        });
+    </script>
+</body>
+</html>
